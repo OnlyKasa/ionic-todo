@@ -26,4 +26,5 @@ export class ItemDetailPage {
     this.description = this.navParams.get('item').description;
   }
 
+  
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { DataProvider } from '../../providers/data/data';
 
 /**
  * Generated class for the AddItemPage page.
@@ -15,33 +16,31 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class AddItemPage {
 
-
   title = ''; 
   description = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public data: DataProvider) {
   }
 
   ionViewDidLoad() {
-
     console.log('ionViewDidLoad AddItemPage');
-    if (this.navParams.get('item')){
-      if (typeof this.navParams.get('item').title !== 'undefined'){
-        this.title = this.navParams.get('item').title;
-      }
-      if (typeof this.navParams.get('item').description !== 'undefined'){
-        this.description = this.navParams.get('item').description;
-      }
-    }
-    
   }
 
   saveItem() {
-    let newItem = {
-      title: this.title,
-      description: this.description
-    };
-    this.view.dismiss(newItem);
+    this.data.getLastIndex().then((id) => {
+      
+      if ( id === null || typeof id === 'undefined'){
+        id = 0 ;
+      }
+      console.log(id);
+      let newItem = {
+        id: id + 1,
+        title: this.title,
+        description: this.description
+      };
+      this.view.dismiss(newItem);
+    })
+    
   }
 
   close() {
