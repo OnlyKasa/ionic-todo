@@ -11,6 +11,8 @@ import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { DataProvider } from '../providers/data/data';
 import { IonicStorageModule } from '@ionic/storage';
 import { EditItemPage } from '../pages/edit-item/edit-item';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EditItemPage } from '../pages/edit-item/edit-item';
     HomePage,
     AddItemPage,
     ItemDetailPage,
-    EditItemPage
+    EditItemPage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,9 @@ import { EditItemPage } from '../pages/edit-item/edit-item';
     HomePage,
     AddItemPage,
     ItemDetailPage,
-    EditItemPage
+    EditItemPage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
